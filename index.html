@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimun-scale=1.0">
+    <title>Wiki-G3</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400&family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- ESTILOS      -->
+    <STYLE type="text/css">
+        *{
+            margin: 0;
+            padding: 0px;
+            box-sizing: border-box; /*para evitar el desbordamiento de las cajas unas con otras*/
+        }
+        a{
+            text-decoration: none; /*quita el subrayado*/
+        }
+        body{
+            font-family: 'Lora', serif;
+            background-color: #eeeded;
+        }
+        .padre{
+            display: flex; /*para iniciar flexbpx desde el padre*/
+            flex-flow: column nowrap; /* para mostrar en columnas y para que se adapte al tamanio establecido*/
+        }
+        .margen-interno{
+            padding: 0 50px;
+        }
+        .header{
+            /*background: url(Imagenes/d.jpg);*/
+            background: url('https://cdn.wallpapersafari.com/97/16/QJXkWY.jpg');
+            background-position: center; /*centra la imagen*/
+            background-attachment: contain; /*fija la imagen en el contenedor*/
+            background-size: cover;
+            display: flex; /* activar flexbox dentro del header*/
+            flex-flow: column nowrap ;
+        }
+        .menu{
+            background: rgba(0,0,0,.1); /*rgb y un degradado*/
+            display: flex; /*activa dentro del menu y muestra los elementos en horizontal*/
+            flex-flow: row nowrap; /* para mostrar en una misma linea*/
+            height: 80px; /*aumenta el tamanio del menu*/
+            align-items: center; /*centrar todos los hijos que esten dentro del menu*/
+            border-bottom: 1px solid rgba(255,255,255,.5); /*linea blanca divisora del menu*/
+        }
+        .logo{
+            flex: 1 1 auto; /*definir tamanio de los hijos*/
+
+        }
+        .logo a{ /*dentro del logo y del ancla*/
+            color: #fff;
+            font-size: 30px;
+        }
+        .logo a:hover{
+            color:#343434;
+        }
+        .nav{
+            flex: 5 1 auto; /*definir mayor tamanio(5) para este hijo*/
+        }
+        .nav a{
+            color: #fff;
+            font-size: 13px;
+            text-transform: uppercase; /*mayusculas*/
+            padding: 0 10px;
+            letter-spacing: 2px;
+        }
+        .nav a:hover{
+            color: #343434;
+        }
+
+        .texto-principal{
+            /*background: #c70039;*/
+            height: 580px;
+            display: flex;
+            align-items: center;
+            margin-right: 360px;
+
+        }
+
+       .header h1{
+            font-size: 21px;
+            color: #000000;
+            font-weight: 300;
+            text-align: center;
+            line-height: 1.6;
+        }
+        h1{
+            font-size: 17px;
+            color: #000000;
+            font-weight: 300;
+            text-align: justify;
+            line-height: 1.6;
+        }
+
+        .titulo{
+            margin-right: 500px;
+            font-size: 35px;
+            font-family: "Droid Sans";
+            color: #2445bf;
+        }
+
+        .footer{
+            background: #000;
+            display: flex; /*activa flex en el padre del pie*/
+            justify-content: center; /*centra todos los hijos*/
+            margin-top: 10px;
+        }
+        .pie{
+            /*background: #2fc4b2;*/
+            /*width: 300px;*/ /*define el ancho*/
+            text-align: center;
+        }
+        .pie a{
+            color: #fff;
+            font-size: 20px;
+            text-transform: uppercase;
+            padding: 0 10px;
+            letter-spacing: 2px;
+        }
+
+        h2{
+            color: #000000;
+            font-weight: 300;
+            text-align: justify;
+            line-height: 1.6;
+        }
+
+        .imagen-central a{
+            display: flex;
+            margin-top: 10px;
+            justify-content: center;
+        }
+
+        .container{
+            display: flex;
+            margin-top: 10px;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-around;
+        }
+        .texto-secundario{
+            margin-right: 10px;
+            margin-left: 10px;
+
+        }
+        .izquierda{
+            margin-left: 10px;
+        }
+        .bibliografia{
+            margin-top: 20px;
+            margin-left: 10px;
+        }
+
+        @media all and (max-width: 1120px){ /*condiciones de 0px a 800px*/
+
+            .menu{
+                flex-direction: column; /*muestra el menu en forma de columna*/
+                height: auto; /*ajusta el alto de forma automatica*/
+            }
+
+            h1{
+                font-size: 15px;
+            }
+            .texto-principal{
+                height: 450px;
+            }
+        }
+
+		
+		@media all and (max-width: 870px){
+         	.texto-principal{
+            /*background: #c70039;*/
+            height: 400px;
+            display: flex;
+            align-items: center;
+            margin-right: 100px;
+			font-size:20px;
+
+        }
+        }
+
+        @media all and (max-width: 729px){
+            .nav a{ font-size: 25px;}
+        }
+
+		@media all and (max-width: 630px){
+         	.texto-principal{
+            /*background: #c70039;*/
+            height: 300px;
+            display: flex;
+            align-items: center;
+            margin-right: 0px;
+
+        }
+		 	.texto-principal > h1{
+			font-size:15px
+		}
+        }
+
+		@media all and (max-width: 400px){
+         	.texto-principal{
+            /*background: #c70039;*/
+            height: 600px;
+            display: flex;
+            align-items: center;
+            margin-right: 0px;
+
+        }
+        }
+
+        @media all and (max-width: 365px){
+            .nav a{
+                font-size: 20px;
+                padding: 0 5px;
+            }
+            .article p{
+                padding-top: 10px;
+            }
+            .article h2{
+                font-size: 15px;
+            }
+        }
+    </STYLE>
+
+
+
+
+    <!--  fin estilos  -->
+
+    <link rel="stylesheet" href="fontawesome-free-5.13.0-web/css/estilos.css">
+
+</head>
+<body>
+    <div class="padre">
+        <header class="header">
+            <div class="menu margen-interno">
+                <div class="logo"> 
+                    <a href="index.html">
+                    <img src="https://www.uhemisferios.edu.ec/images/rocketlauncher/pages/logo-2018.png" alt="" height="60%" width="60%">
+                    </a>
+                </div>
+                <h2 class="titulo margen-interno">CRISPR/Cas9</h2>
+            </div>
+            <div class="texto-principal margen-interno">
+				<h1>
+					La nucleasa Cas 9 del sistema inmunológico adaptativo CRISPR (repeticiones palindrómicas cortas agrupadas regularmente interespaciadas), consiste en un sistema adaptativo microbiano que utiliza nucleasas guiadas por ARN para separar elementos genéticos extraños. La eficiencia y efectividad de esta técnica ha contribuido en diversos campos como la edición del genoma, la investigación de la función genética y la terapia génica en animales y células humanas.</h1>
+            </div>
+        </header>
+
+        <div class="imagen-central">
+            <a href="https://www.youtube.com/watch?v=FYRqK2rBWs4">
+            <img src="https://www.reproduccionasistida.org/wp-content//sistema-crispr-cas9.png" alt="" width="45%" height="45%" >
+            </a>
+        </div>
+
+        <div class="container">
+            <div class="izquierda">
+                <h1>La biología molecular y genética ha avanzado de tal forma que actualmente se puede llegar a diseñar sistemas y organismos biológicos mediante la manipulación de los genes, con la finalidad de contribuir en las ciencias básicas, medicina y biotecnología, y es así, como esta evolución ha llegado a la creación de la técnica CRISPR-Cas9.
+                </h1>
+					  </br>
+				<h1>Cas9 es una tecnología de edición de genes que está causando una gran conmoción en la investigación biomédica. Hace posible corregir errores en el genoma y activar o desactivar genes en células y organismos de forma rápida, económica y con relativa facilidad. Tiene una serie de aplicaciones de laboratorio que incluyen la generación rápida de modelos celulares y animales, pantallas genómicas funcionales e imágenes en vivo del genoma celular (Hsu et al, 2014).
+	 </h1>
+	 	  </br>
+	  <h1>
+				Es una tecnología de edición de genes que involucra dos componentes esenciales: un ARN guía para que coincida con un gen objetivo deseado, y Cas9 (proteína 9 asociada a CRISPR), una endonucleasa que causa una ruptura del ADN de doble hebra, lo que permite modificaciones al genoma (Redman et al., 2016).
+                </h1>
+            </div>
+            <div class="derecha">
+                <a href="https://www.youtube.com/watch?v=FYRqK2rBWs4">
+<!--                <img src="https://www.heartinternet.uk/blog/wp-content/uploads/cssjavascriptanimations-slidingclick.gif" alt="">-->
+                    <img src="https://media0.giphy.com/media/lQgZaEcu5UGdKHOiRm/source.gif" alt="" width="350px%" >
+                </a>
+            </div>
+        </div>
+
+        <div class="texto-secundario">
+            
+		<h1  align="justify" style="font-weight: bold;">
+			Aplicaciones</h1>
+			</br>
+        	
+			<h1  align="justify" style="font-weight: bold;">
+			Corrección de trastornos genéticos:</h1>
+			
+			<h1 align="justify">
+				Una de las aplicaciones más interesantes de CRISPR / Cas9 es su uso potencial para tratar trastornos genéticos causados por mutaciones de un solo gen. Ejemplos de tales enfermedades incluyen fibrosis quística (FQ), distrofia muscular de Duchenne (DMD) y hemoglobinopatías. Hasta ahora, el enfoque solo se ha validado en modelos preclínicos, pero hay esperanzas de que pronto pueda trasladarse a la práctica clínica (Schwank et al., 2013). CRISPR / Cas9 también podría usarse para tratar hemoglobinopatías. Demostraron recientemente que la alteración del potenciador de BCL11A por CRISPR / Cas9 podría inducir hemoglobina fetal tanto en ratones como en células eritroblásticas humanas primarias (Canver et al., 2015).</h1>
+			
+	</br>			
+				<h1  align="justify" style="font-weight: bold;">
+			Tratamiento del VIH:</h1>
+			
+			<h1 align="justify">
+				Hu y col.mostró que el sistema CRISPR / Cas9 podría usarse para apuntar a la actividad del genoma del VIH-1. Esta expresión y replicación del gen del VIH inactivado en una variedad de células que pueden infectarse de forma latente con el VIH, sin efectos tóxicos. Además, las células también podrían inmunizarse contra la infección por VIH-1. Este es un avance terapéutico potencial para superar el problema actual de cómo eliminar el VIH de las personas infectadas (Hu et al., 2014).</h1>
+					</br>
+				
+				<h1  align="justify" style="font-weight: bold;">
+			Corrección de trastornos genéticos:</h1>
+			
+			<h1 align="justify">
+				Ha habido un interés creciente en la posibilidad de usar CRISPR / Cas9 para modificar las células T derivadas del paciente y las células madre / progenitoras que luego pueden reintroducirse en los pacientes para tratar la enfermedad. Este enfoque puede superar algunos de los problemas asociados con la forma de administrar de manera eficiente la edición de genes a las células correctas (Shumann et al., 2015).
+				</h1>
+							<h1 align="justify">
+			La ingeniería del genoma de células T ya ha mostrado éxito en el tratamiento de neoplasias hematológicas y tiene el potencial de tratar cánceres sólidos, inmunodeficiencias primarias y enfermedades autoinmunes (Shumann et al., 2015).
+				</h1>
+							<h1 align="justify">
+	También existe interés en utilizar la edición del genoma mediada por CRISPR / Cas9 en células madre pluripotentes o células madre somáticas primarias para tratar enfermedades. Por ejemplo, demostraron que la mutación que causa la β-talasemia podría corregirse ex vivo en células madre pluripotentes inducidas por humanos. Sugieren que en el futuro tal enfoque podría proporcionar una fuente de células para el trasplante de médula ósea para tratar la β-talasemia y otras enfermedades monogénicas similares (Xie et al., 2014).
+				</h1>
+				
+        </div>
+
+	</br>	
+	
+	
+	 <div class="bibliografia">
+	<h4 class="titulo" align="justify" style="font-weight: bold;">
+				Conclusiones</h4>
+	</div>
+		
+		    <div class="texto-secundario">
+			<h1 align="justify">	
+			Mediante la realización del presente trabajo se puede concluir que:
+			</h1>
+			</br>
+			<h1 align="justify">	
+			El sistema de CRISPR-Cas9 ha supuesto una revolución Genómica, principalmente por su sencillez, versatilidad y aplicabilidad sobre todo tipo de células. Las posibilidades que brinda de modificar de manera rápida y efectiva cualquier gen era algo impensable en antaño, y permite la regeneración de modelos experimentales realizados a gran escala. Presenta una amplia variedad de aplicaciones en diferentes campos médicos y científicos (Industria alimentaria, farmacéutica, Biotecnología, Terapéutica y en futuras investigaciones científicas). En campos como la terapéutica moderna supone un gran paso, pues parece poseer gran utilidad en el tratamiento de enfermedades que presentan causas muy distintas entre sí como trastornos hereditarios, procesos infecciosos y en enfermedades que han supuesto un duro reto para la historia médica del ser humano como el VIH.
+			</h1>
+			</br>
+			<h1 align="justify">	
+			Debido a la continua investigación y mejora en base a las técnicas se hace cada vez más específico, logrando un mayor avance en sus usos y aplicaciones lo que supone un paso importante en la ciencia y medicina pues lo que se desea lograr es la inocuidad del ser humano. Las perspectivas a futuro del sistema CRISPR-Cas9 son enormemente prometedoras para la erradicación de enfermedades hereditarias y principalmente la posibilidad que le ha dado al ser humano de tratar enfermedades que hasta el momento eran consideradas como incurables.
+			</h1>
+</div>
+
+	</br>
+	  
+	  
+	  <div class="container">
+            <div class="izquierda"> 
+				<div align="center">		
+			<img src="https://i.giphy.com/media/YRzQnWzbn4WIxd3ZYx/200w.webp" alt="" width="200" height="200"></div>
+			</div>
+			 
+			 <div class="derecha"> 
+			 <div>
+			<h2 align="center">
+			"No podemos comprender ni imaginar la belleza ilimitada 
+</h2>
+<h2>
+			que nos revelará el futuro gracias a la Ciencia." 
+			<span style="font-weight:normal;">
+			</br>
+			Isaac Asimov
+			</span></h2>
+			</div>
+			</div>
+		 </div>
+	
+			
+			
+
+
+
+
+	</br>
+			<div class="bibliografia">
+			<h2 class="titulo">Anexos:</h2>
+			
+			
+					
+					<div>       
+					<a href="https://www.nytimes.com/es/2018/12/07/espanol/primeros-bebes-geneticamente-editados.html">	
+					> Revista: The New York times. ¿Por qué los científicos están tan molestos con los primeros bebés Crispr? (click aquí)
+					</a>
+					</div>
+			
+					
+			</br>
+					<div> 
+					<a href="https://www.youtube.com/watch?v=BhH8T85kXHY">	
+					> Video: Gemelas modificadas (click aquí)
+					</a>
+					</div>
+			</br>
+					<div>   
+					<a href="https://www.youtube.com/watch?v=ZoE-G7YPvZQ">	
+					> Video: "CRISPR: así se editan los genes | Materia" (click aquí)
+					</a>
+					</div>
+
+			</br>
+					<div>       
+					<a href="https://www.youtube.com/watch?v=s9tYTeMcZ3Y">	
+					> Video: Técnica CRISPR CAS9 (click aquí)
+					</a>
+					</div>
+			
+
+
+        <div class="bibliografia">
+            <h1 class="titulo">Referencias bibliográficas</h1>
+            <ul>
+                <li>
+Canver, C., Smith, C., Sher, F., Pinello, L., Sanjana, E., Shalem, O., Luc, S. (2015). Bcl11a enhancer dissection by Cas9-mediated in situ saturating mutagenesis. Nature, 527(7577), 192-197. 
+		</li>
+
+<li>
+Hsu, D., Lander, S., Zhang, F. (2014). Development and applications of Crispr cas9 for genome engineering. Cell, 157(6), 1262-1278. 
+		</li>
+
+<li>
+Hu, W., Kaminski, R., Yang, F., Zhang, Y., Cosentino, L., Li, F., Mo, X. (2014). RNA directed gene editing specifically eradicates latent and prevents new HIV 1 infection. Proceedings of the National Academy of Sciences, 111(31), 11461-11466. 
+		</li>
+
+<li>
+Redman, M., King, A., Watson, C., King, D. (2016). What is CRISPR/Cas9? Archives of Disease in Childhood-Education and Practice, 101(4), 213-215.
+		</li>
+
+<li>
+Schumann, K., Lin, S., Boyer, E., Simeonov, D. R., Subramaniam, M., Gate, E., Marson, A. (2015). Generation of knock in primary human T cells using Cas9 ribonucleoproteins. Proceedings of the National Academy of Sciences, 112(33), 10437-10442.  
+		</li>
+
+<li>
+Schwank, G., Koo, K., Sasselli, V., Dekkers, F., Heo, I., Demircan, T., Nieuwenhuis, E. (2013). Functional repair of CFTR by CRISPR/Cas9 in intestinal stem cell organoids of cystic fibrosis patients. Cell stem cell, 13(6), 653-658. 
+		</li>
+
+<li>
+Xie, F., Ye, L., Chang, J. C., Beyer, A. I., Wang, J., Muench, O., Kan, W. (2014). Seamless gene correction of β thalassemia mutations in patient specific iPSCs using CRISPR/Cas9 and piggyBac. Genome research, 24(9), 1526-1533.
+		</li>
+
+<li>
+Yin, H., Xue, W., Chen, S., Bogorad, L., Benedetti, E., Grompe, M., Anderson, G. (2014). Genome editing with Cas9 in adult mice corrects a disease mutation and phenotype. Nature biotechnology, 32(6), 551-553. 
+		</li>
+            </ul>
+        </div>
+		
+
+
+        <footer class="footer margen-interno">
+            <nav class="pie">
+                <a href="#">WIKI-Grupo 3</a>
+            </nav>
+        </footer>
+    </div>
+
+    
+</body>
+</html>
